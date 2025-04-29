@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>🔑 Admin Login</title>
+    <style>
+        /* ... (Your existing styles for admin.html) ... */
+        .flag-container {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #2ecc71;
+            color: #222;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>🔑 Admin Access</h2>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <form action="/admin" method="post" onsubmit="return checkCredentials()">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter password">
+            </div>
+            <button type="submit">🔓 Login</button>
+            <p style="margin-top: 10px;"><a href="admin-info.html" style="color: #aaa; text-decoration: none;">View Login Attempts</a></p>
+            <div id="flagContainer" style="display: none;" class="flag-container">
+                <p>Congratulations! The flag is: <span id="flag"></span></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function checkCredentials() {
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const flagContainer = document.getElementById('flagContainer');
+            const flagDisplay = document.getElementById('flag');
+
+            localStorage.setItem('tempUsername', usernameInput.value);
+            localStorage.setItem('tempPassword', passwordInput.value);
+
+            if (usernameInput.value === 'admin' && passwordInput.value === 'password') {
+                flagDisplay.textContent = 'CTF{javascript_frontend_flag}'; // Replace with your actual flag
+                flagContainer.style.display = 'block';
+                return false; // Prevent the form from submitting to the backend in this frontend-only check
+            } else {
+                // If credentials are wrong, the form will submit to the backend
+                return true;
+            }
+        }
+    </script>
+</body>
+</html>
