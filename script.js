@@ -1,0 +1,9 @@
+function revealFlag() {
+    const part1 = "CTF{";
+    const part2 = "very_";
+    const part3 = "obvious_";
+    const part4 = "flag}";
+    console.log(part1 + part2 + part3 + part4);
+  }
+  
+  revealFlag();
