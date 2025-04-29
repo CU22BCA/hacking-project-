@@ -2,120 +2,79 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CTF Info Disclosure Lab</title>
+    <title>About This Info Disclosure Lab</title>
     <style>
         body {
-            background-color: #0d0d0d;
-            color: #e0e0e0;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #1a1a1a;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            background-image: url('security_pattern.png'); /* Replace with your image path */
-            background-size: cover;
-            background-repeat: no-repeat;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            position: relative; /* For pseudo-element overlay */
-        }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for better text readability */
-            z-index: -1;
+            padding: 20px;
+            line-height: 1.6;
         }
 
         h1 {
+            color: #4CAF50;
             text-align: center;
-            padding: 40px 0;
-            color: #00ff99;
-            font-size: 3em;
-            text-shadow: 0 0 10px #00ff99;
-            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #4CAF50;
         }
 
         p {
-            text-align: center;
-            font-size: 1.3em;
-            margin: 10px 20px 30px;
-            max-width: 700px; /* Increased max-width for better readability */
+            margin-bottom: 15px;
         }
 
         ul {
-            max-width: 600px;
-            margin: 0 auto 40px; /* Added margin at the bottom */
-            padding: 0;
-            list-style: none;
-            width: 100%; /* Make ul take full width of its container */
+            list-style-type: disc;
+            margin-left: 30px;
+            margin-bottom: 15px;
         }
 
         li {
-            margin: 20px 0;
-            text-align: center;
+            margin-bottom: 8px;
         }
 
-        a {
-            display: inline-block;
-            padding: 12px 25px;
-            background-color: #00ff99;
-            color: #0d0d0d;
-            text-decoration: none;
-            border-radius: 8px;
+        .important {
+            color: #ff9800;
             font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
-            box-shadow: 0 0 5px #00ff99;
         }
 
-        a:hover {
-            background-color: #00cc7a;
-            transform: scale(1.05);
-            box-shadow: 0 0 10px #00cc7a; /* Enhanced hover effect */
+        .back-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3f51b5;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
 
-        footer {
-            text-align: center;
-            margin-top: 60px; /* Increased margin */
-            padding: 20px 0;
-            font-size: 0.9em;
-            color: #555;
-            border-top: 1px solid #333; /* Added a subtle top border */
-            width: 100%;
-        }
-
-        .hint {
-            color: #ffff00; /* Yellow color for hints */
-            font-style: italic;
-            display: block;
-            margin-top: 15px;
+        .back-link:hover {
+            background-color: #303f9f;
         }
     </style>
 </head>
 <body>
-    <h1><img src="security_info_disclosure.png" alt="Info Disclosure Icon" style="vertical-align: middle; margin-right: 10px; height: 50px;"> 🕵️ Info Disclosure Challenge</h1>
-
-    <p>Welcome hacker! This lab is part of a Capture The Flag (CTF) challenge focused on <strong>Information Disclosure</strong>.</p>
-    <p>Your mission: Uncover sensitive information that has been leaked within the code, server logs, or accessible endpoints. Pay close attention to details!</p>
-    <p class="hint">Tip: Remember to check HTML comments, explore the downloaded server logs for unusual activity, and investigate all the provided links and any other accessible parts of the web application.</p>
-
+    <h1>📘 About This Info Disclosure Lab</h1>
+    <p>Welcome to the Info Disclosure Lab! This challenge is designed to help you understand and identify common vulnerabilities that can lead to the unintentional exposure of sensitive information in web applications. By exploring the scenarios presented in this lab, you'll gain practical experience in recognizing these flaws and understanding their potential impact.</p>
+    <p>In this lab, you will be looking for various ways that information might be unintentionally revealed. These can include:</p>
     <ul>
-        <li><a href="http://127.0.0.1:5000/logs/server.log" target="_blank">📄 Download Server Log</a></li>
-        <li><a href="admin.html">🛠️ Try to access Admin Panel</a></li>
-        <li><a href="info.html">📘 Learn What This Lab Is</a></li>
-        <li><a href="admindash.html"> ⚙️ Admin Dashboard</a></li>
-        <li>
-            <h1>Can you find the secret?</h1>
-            <script src="obfuscated_script.js"></script>
-        </li>
+        <li>Comments in the HTML or other code that contain sensitive data or hints.</li>
+        <li>Sensitive data present in log files that are inadvertently made accessible.</li>
+        <li>Information revealed through misconfigured server endpoints that expose internal details or functionality.</li>
+        <li>Backup files or other artifacts left in accessible locations that might contain confidential information.</li>
+        <li>Error messages that reveal internal system details or paths.</li>
     </ul>
-
-    <footer>
-        &copy; 2025 CTF Labs — Train Your Hacking Skills Responsibly.
-        </footer>
+    <p>Remember the tips provided on the main page to guide your exploration:</p>
+    <ul>
+        <li><span class="important">Check HTML comments:</span> Always inspect the source code of web pages, as developers sometimes leave notes or even sensitive information within the comments.</li>
+        <li><span class="important">Check logs:</span> Server logs can sometimes contain valuable information, including details about requests, errors, and potentially sensitive data. Look for accessible log files.</li>
+        <li><span class="important">Check endpoints:</span> Explore different URLs and functionalities of the web application. Sometimes, unexpected or administrative endpoints can be accessed, revealing more than intended.</li>
+    </ul>
+    <p>This lab is a simplified scenario to illustrate these common vulnerabilities. In real-world applications, information disclosure can be more subtle and might require a combination of techniques to uncover.</p>
+    <p>Your goal is to identify any instances where sensitive information is unintentionally exposed. Use the clues provided and your investigative skills to find the hidden secrets!</p>
+    <p>Good luck with the challenge, and happy hunting!</p>
+    <a href="index.html" class="back-link">← Back to the Main Page</a>
 </body>
 </html>
