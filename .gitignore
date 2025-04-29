@@ -1,174 +1,121 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CTF Info Disclosure Lab</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-image: url('security_pattern.png'); /* Replace with your image path */
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            position: relative; /* For pseudo-element overlay */
+        }
 
-# C extensions
-*.so
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for better text readability */
+            z-index: -1;
+        }
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+        h1 {
+            text-align: center;
+            padding: 40px 0;
+            color: #00ff99;
+            font-size: 3em;
+            text-shadow: 0 0 10px #00ff99;
+            margin-bottom: 30px;
+        }
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+        p {
+            text-align: center;
+            font-size: 1.3em;
+            margin: 10px 20px 30px;
+            max-width: 700px; /* Increased max-width for better readability */
+        }
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+        ul {
+            max-width: 600px;
+            margin: 0 auto 40px; /* Added margin at the bottom */
+            padding: 0;
+            list-style: none;
+            width: 100%; /* Make ul take full width of its container */
+        }
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
+        li {
+            margin: 20px 0;
+            text-align: center;
+        }
 
-# Translations
-*.mo
-*.pot
+        a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #00ff99;
+            color: #0d0d0d;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+            box-shadow: 0 0 5px #00ff99;
+        }
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+        a:hover {
+            background-color: #00cc7a;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #00cc7a; /* Enhanced hover effect */
+        }
 
-# Flask stuff:
-instance/
-.webassets-cache
+        footer {
+            text-align: center;
+            margin-top: 60px; /* Increased margin */
+            padding: 20px 0;
+            font-size: 0.9em;
+            color: #555;
+            border-top: 1px solid #333; /* Added a subtle top border */
+            width: 100%;
+        }
 
-# Scrapy stuff:
-.scrapy
+        .hint {
+            color: #ffff00; /* Yellow color for hints */
+            font-style: italic;
+            display: block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1><img src="security_info_disclosure.png" alt="Info Disclosure Icon" style="vertical-align: middle; margin-right: 10px; height: 50px;"> 🕵️ Info Disclosure Challenge</h1>
 
-# Sphinx documentation
-docs/_build/
+    <p>Welcome hacker! This lab is part of a Capture The Flag (CTF) challenge focused on <strong>Information Disclosure</strong>.</p>
+    <p>Your mission: Uncover sensitive information that has been leaked within the code, server logs, or accessible endpoints. Pay close attention to details!</p>
+    <p class="hint">Tip: Remember to check HTML comments, explore the downloaded server logs for unusual activity, and investigate all the provided links and any other accessible parts of the web application.</p>
 
-# PyBuilder
-.pybuilder/
-target/
+    <ul>
+        <li><a href="http://127.0.0.1:5000/logs/server.log" target="_blank">📄 Download Server Log</a></li>
+        <li><a href="admin.html">🛠️ Try to access Admin Panel</a></li>
+        <li><a href="info.html">📘 Learn What This Lab Is</a></li>
+        <li><a href="admindash.html"> ⚙️ Admin Dashboard</a></li>
+        <li>
+            <h1>Can you find the secret?</h1>
+            <script src="obfuscated_script.js"></script>
+        </li>
+    </ul>
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
-
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
-
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
-
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
-
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
-.pdm.toml
-.pdm-python
-.pdm-build/
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
-
-# Ruff stuff:
-.ruff_cache/
-
-# PyPI configuration file
-.pypirc
+    <footer>
+        &copy; 2025 CTF Labs — Train Your Hacking Skills Responsibly.
+        </footer>
+</body>
+</html>
