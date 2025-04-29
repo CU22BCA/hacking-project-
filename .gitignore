@@ -2,120 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CTF Info Disclosure Lab</title>
+    <title>Admin Information</title>
     <style>
         body {
-            background-color: #0d0d0d;
-            color: #e0e0e0;
-            font-family: 'Courier New', Courier, monospace;
+            background-color: #1e1e1e;
+            color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            background-image: url('security_pattern.png'); /* Replace with your image path */
-            background-size: cover;
-            background-repeat: no-repeat;
+            padding: 20px;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
             min-height: 100vh;
-            position: relative; /* For pseudo-element overlay */
         }
 
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay for better text readability */
-            z-index: -1;
-        }
-
-        h1 {
-            text-align: center;
-            padding: 40px 0;
-            color: #00ff99;
-            font-size: 3em;
-            text-shadow: 0 0 10px #00ff99;
-            margin-bottom: 30px;
-        }
-
-        p {
-            text-align: center;
-            font-size: 1.3em;
-            margin: 10px 20px 30px;
-            max-width: 700px; /* Increased max-width for better readability */
-        }
-
-        ul {
-            max-width: 600px;
-            margin: 0 auto 40px; /* Added margin at the bottom */
-            padding: 0;
-            list-style: none;
-            width: 100%; /* Make ul take full width of its container */
-        }
-
-        li {
-            margin: 20px 0;
+        .container {
+            background-color: #444;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+            width: 400px;
             text-align: center;
         }
 
-        a {
+        h2 {
+            color: #f39c12;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .info-box p {
+            margin-bottom: 10px;
+        }
+
+        .back-link {
             display: inline-block;
             padding: 12px 25px;
-            background-color: #00ff99;
-            color: #0d0d0d;
+            background-color: #64b5f6;
+            color: #222;
             text-decoration: none;
             border-radius: 8px;
             font-weight: bold;
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
-            box-shadow: 0 0 5px #00ff99;
+            transition: background-color 0.3s ease;
         }
 
-        a:hover {
-            background-color: #00cc7a;
-            transform: scale(1.05);
-            box-shadow: 0 0 10px #00cc7a; /* Enhanced hover effect */
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 60px; /* Increased margin */
-            padding: 20px 0;
-            font-size: 0.9em;
-            color: #555;
-            border-top: 1px solid #333; /* Added a subtle top border */
-            width: 100%;
-        }
-
-        .hint {
-            color: #ffff00; /* Yellow color for hints */
-            font-style: italic;
-            display: block;
-            margin-top: 15px;
+        .back-link:hover {
+            background-color: #42a5f5;
         }
     </style>
 </head>
 <body>
-    <h1><img src="security_info_disclosure.png" alt="Info Disclosure Icon" style="vertical-align: middle; margin-right: 10px; height: 50px;"> 🕵️ Info Disclosure Challenge</h1>
+    <div class="container">
+        <h2>Admin Information</h2>
+        <div class="info-box">
+            <p><strong>Username Attempted:</strong> <span id="displayedUsername"></span></p>
+            <p><strong>Password Attempted:</strong> <span id="displayedPassword"></span></p>
+        </div>
+        <a href="/" class="back-link">Go Back</a>
+    </div>
 
-    <p>Welcome hacker! This lab is part of a Capture The Flag (CTF) challenge focused on <strong>Information Disclosure</strong>.</p>
-    <p>Your mission: Uncover sensitive information that has been leaked within the code, server logs, or accessible endpoints. Pay close attention to details!</p>
-    <p class="hint">Tip: Remember to check HTML comments, explore the downloaded server logs for unusual activity, and investigate all the provided links and any other accessible parts of the web application.</p>
+    <script>
+        // Retrieve the username and password from localStorage
+        const username = localStorage.getItem('tempUsername');
+        const password = localStorage.getItem('tempPassword');
 
-    <ul>
-        <li><a href="http://127.0.0.1:5000/logs/server.log" target="_blank">📄 Download Server Log</a></li>
-        <li><a href="admin.html">🛠️ Try to access Admin Panel</a></li>
-        <li><a href="info.html">📘 Learn What This Lab Is</a></li>
-        <li><a href="admindash.html"> ⚙️ Admin Dashboard</a></li>
-        <li>
-            <h1>Can you find the secret?</h1>
-            <script src="obfuscated_script.js"></script>
-        </li>
-    </ul>
+        // Display the retrieved values
+        document.getElementById('displayedUsername').textContent = username;
+        document.getElementById('displayedPassword').textContent = password;
 
-    <footer>
-        &copy; 2025 CTF Labs — Train Your Hacking Skills Responsibly.
-        </footer>
+        // Optionally, clear the stored values after displaying
+        localStorage.removeItem('tempUsername');
+        localStorage.removeItem('tempPassword');
+    </script>
 </body>
 </html>
